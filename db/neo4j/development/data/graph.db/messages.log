@@ -1065,3 +1065,5 @@ RETURN r;
 2015-12-28 15:48:07.314+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :User(provider) with 1 unique values in sample of avg size 1 taken from index containing 1 entries
 2015-12-28 15:48:17.363+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :User(uid) with 1 unique values in sample of avg size 1 taken from index containing 1 entries
 2015-12-28 15:48:27.321+0000 INFO  [o.n.k.i.a.i.s.OnlineIndexSamplingJob]: Sampled index :User(uuid) with 4 unique values in sample of avg size 4 taken from index containing 4 entries
+2015-12-28 16:09:15.454+0000 WARN  [o.n.k.EmbeddedGraphDatabase]: GC Monitor: Application threads blocked for 237ms.
+2015-12-28 16:10:29.457+0000 WARN  [o.n.k.EmbeddedGraphDatabase]: GC Monitor: Application threads blocked for 283ms.

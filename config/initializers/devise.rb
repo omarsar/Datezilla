@@ -268,13 +268,12 @@ Devise.setup do |config|
 
   #For development mode
   if Rails.env.development?
-    config.omniauth :facebook, "1410387785924333", "411a697861101a98612cd0205f45319e", :scope => 'email,user_friends,public_profile,publish_actions', :display=>'popup', :secure_image_url => 'true'
+    config.omniauth :facebook, ENV['DEV_AKEY'], ENV['DEV_ASECRET'], :scope => 'email,user_friends,public_profile,publish_actions', :display=>'popup', :secure_image_url => 'true'
 
   else
-    config.omniauth :facebook, "1537934899816329", "73819c56038c56543e6f5f4ac6695f5c", :scope => 'email,user_friends,public_profile,publish_actions', :display=>'popup', :secure_image_url => 'true'
+    config.omniauth :facebook, ENV['PROD_AKEY'], ENV['PROD_ASECRET'], :scope => 'email,user_friends,public_profile,publish_actions', :display=>'popup', :secure_image_url => 'true'
     #config.omniauth :facebook, "370676716426763", "8f47ab9039dc2827953737cc81d98e7c", :scope => 'email,user_friends,public_profile,publish_actions'
     
   end
-  
   
 end

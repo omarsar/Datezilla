@@ -97,16 +97,16 @@ class User
         
         user = User.where(:provider => auth.provider, :uuid => auth.uid).first
         if Rails.env.development?
-            $akey = "1410387785924333"
-            $asecret = "411a697861101a98612cd0205f45319e"
+            $akey = ENV['DEV_AKEY']
+            $asecret = ENV['DEV_ASECRET']
         else
-            $akey = "1537934899816329"
-            $asecret = "73819c56038c56543e6f5f4ac6695f5c"
+            $akey = ENV['PROD_AKEY']
+            $asecret = ENV['PROD_ASECRET']
         end
 
         if user
             if (Date.today - user.tokendate).to_i > 35
-                $usertoken = User.where(:id => user.id).first
+                $usertoken = User.where(:uid => user.uid).first
                 @oauth = Koala::Facebook::OAuth.new($akey, $asecret)
                 $oauthsecret = @oauth.exchange_access_token_info(auth.credentials.token)
                 $usertoken.tokensecret = $oauthsecret["access_token"]
@@ -123,7 +123,7 @@ class User
             registered_user = User.where(:email => auth.info.email).first
             if registered_user
                 if (Date.today - registered_user.tokendate).to_i > 35
-                    $usertoken = User.where(:id => registered_user.id).first
+                    $usertoken = User.where(:uid => registered_user.uid).first
                     @oauth = Koala::Facebook::OAuth.new($akey, $asecret)
                     $oauthsecret = @oauth.exchange_access_token_info(auth.credentials.token)
                     $usertoken.tokensecret = $oauthsecret["access_token"]
