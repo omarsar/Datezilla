@@ -1,0 +1,20 @@
+#Creates a model
+rails g model Asset title:string created_at:datetime updated_at:datetime
+
+#created a scaffold
+rails g scaffold Comment title:string
+
+#creates controllers for views 
+rails g controller assets
+
+
+#creates a relationship
+has_many :out, :interests, type: :HAS_INTEREST, model_class: :Interest
+
+#make the actual relationship
+@user = User.first
+@interest = Interest.first
+
+@user.interests = @interest
+
+
