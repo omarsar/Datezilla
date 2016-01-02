@@ -6,6 +6,16 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show]
 
+  #resource for follow function for users
+  resources :users do
+    member do
+      put "follow", to: "users#followed"
+      put "unfollow", to: "users#unfollowed"
+      put "goonline", to: "users#goOnline"
+      put "gooffline", to: "users#goOffline"
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

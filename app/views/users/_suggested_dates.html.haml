@@ -1,11 +1,12 @@
 
-%a.dropdown-button.btn{"data-activates" => "dropdown1", :href => "#"} 
-	= "Options"
-%ul#dropdown1.dropdown-content
-	- @filtering = ["Featured","Join", "New", "Nearby", "Random","Following"]
-	- @filtering.each do |option|
-		%li
-			= link_to option, users_path(:filter=>"#{option}")
+.row
+	%a.dropdown-button.btn.pull-right{"data-activates" => "dropdown1", :href => "#", :class=>"btn-primary"} 
+		= "Options"
+	%ul#dropdown1.dropdown-content
+		- @filtering = ["Featured","Join", "New", "Nearby", "Random","Following"]
+		- @filtering.each do |option|
+			%li
+				= link_to option, users_path(:filter=>"#{option}")
 
 
 -# The listed users
@@ -22,16 +23,19 @@
 				- @backgroundColor = "#FAFAFA"
 
 			-#user-card
-			%a.collection-item{:style=>"background-color:#{@backgroundColor};"}
+			.collection-item{:style=>"background-color:#{@backgroundColor};"}
 				.row
 					.col.s2
 						%i
 							%img.circle{:src => "#{user.avatar.url}", :style => ""}
 					.col.s10
-						= user.email
+						%a
+							= user.username
 						%br
-						= user.username
+						= user.email						
 						%br
 						= user.location
 				.row
 					= "Interests:"
+				.row
+					= render partial: 'follow', :locals => {:user=> user}

@@ -1,0 +1,11 @@
+- if user_signed_in?
+	-if current_user.following.include?(user)
+		- @showFollowing = true
+		- @followValue = "Following"
+		
+	-else
+		- @showFollowing = false
+		- @followValue = "Follow"
+		
+	.col.s4
+		= react_component 'Follow', {followValue: @followValue, showFollowing: @showFollowing, userId: user.id}
