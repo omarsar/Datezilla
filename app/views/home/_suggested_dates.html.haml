@@ -1,0 +1,33 @@
+
+%a.dropdown-button.btn{"data-activates" => "dropdown1", :href => "#"} 
+	= "Options"
+%ul#dropdown1.dropdown-content
+	- @filtering = ["Featured","Online", "New", "Nearby", "Random","Following"]
+	- @filtering.each do |option|
+		%li
+			= link_to option, users_path(:filter=>"#{option}")
+
+
+-# The listed users
+.collection
+	- @users.each do |user|
+		- if user != current_user
+
+			-#obtain the color of the card of the user based on the gender (blue for male and pink for male)
+			-if user.gender = 'Male'
+				- @backgroundColor = "blue"
+			-else
+				- @backgroundColor = "pink"
+
+
+			%a.collection-item{:style=>"background-color:#5faee3;"}
+				.row
+					.col.s2
+						%i
+							%img.circle{:src => "#{user.avatar.url}", :style => ""}
+					.col.s10
+						= user.email
+						%br
+						= user.username
+				.row
+					= "Interests:"

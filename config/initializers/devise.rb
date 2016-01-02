@@ -266,12 +266,13 @@ Devise.setup do |config|
   #My addition: To support the Facebook, Google, Linked_In Authentication in the app
   require "omniauth-facebook"
 
+  #publish_actions
   #For development mode
   if Rails.env.development?
-    config.omniauth :facebook, ENV['DEV_AKEY'], ENV['DEV_ASECRET'], :scope => 'email,user_friends,public_profile,publish_actions', :display=>'popup', :secure_image_url => 'true'
+    config.omniauth :facebook, ENV['DEV_AKEY'], ENV['DEV_ASECRET'], :scope => 'email,user_friends,public_profile,user_location', :info_fields => 'email,name,first_name,last_name,gender,location', :display=>'popup', :secure_image_url => 'true'
 
   else
-    config.omniauth :facebook, ENV['PROD_AKEY'], ENV['PROD_ASECRET'], :scope => 'email,user_friends,public_profile,publish_actions', :display=>'popup', :secure_image_url => 'true'
+    config.omniauth :facebook, ENV['PROD_AKEY'], ENV['PROD_ASECRET'], :scope => 'email,user_friends,public_profile', :display=>'popup', :secure_image_url => 'true'
     #config.omniauth :facebook, "370676716426763", "8f47ab9039dc2827953737cc81d98e7c", :scope => 'email,user_friends,public_profile,publish_actions'
     
   end

@@ -18,6 +18,29 @@ gem "neo4jrb-paperclip", github: 'subvertallchris/neo4jrb-paperclip', require: "
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "koala", "~> 1.10.0rc"
+#gem 'neography'
+#gem 'neo4jrb_spatial', '~> 1.0.0'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+#gem 'sass-rails', '>= 3.2'
+
+
+#For react capabilities
+gem 'react-rails', github: 'reactjs/react-rails'
+gem 'sprockets-coffee-react'
+gem 'nprogress-rails', github: 'caarlos0/nprogress-rails'
+gem 'momentjs-rails', github: 'derekprior/momentjs-rails'
+gem "js-routes", github: 'railsware/js-routes'
+gem 'annotate', github: 'ctran/annotate_models'
+gem 'font-awesome-rails'
+
+
+#For views:
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem 'faker'
+gem 'normalize-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

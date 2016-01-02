@@ -1,5 +1,9 @@
 class User 
+  #require 'neo4j/spatial'
+  #extend Geocoder::Model::ActiveNode
+
   include Neo4j::ActiveNode
+  #include Neo4j::ActiveNode::Spatial
   include Neo4jrb::Paperclip
     #
     # Neo4j.rb needs to have property definitions before any validations. So, the property block needs to come before
@@ -21,7 +25,16 @@ class User
      property :username, :type => String, :index => :exact
      property :tokensecret, :type => String
      property :tokendate, :type => Date
+     property :location, :type => String
+     #property :lat, :type => Float
+     #property :lon, :type => Float
 
+
+     #for geolocation
+     #geocoded_by :location
+     #after_validation :location, :if => :location_changed?
+     #spatial_index 'users'
+     #after_save :geocode
 
      property :created_at, type: DateTime
      property :updated_at, type: DateTime
@@ -95,7 +108,8 @@ class User
 
     def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
         
-        user = User.where(:provider => auth.provider, :uuid => auth.uid).first
+        user = User.where(:provider => auth.provider, :uid => auth.uid).first
+
         if Rails.env.development?
             $akey = ENV['DEV_AKEY']
             $asecret = ENV['DEV_ASECRET']
@@ -115,7 +129,7 @@ class User
             end 
 
             #update profile image
-            user.update_attribute(:image, auth.info.image)
+            user.update_attribute(:avatar, auth.info.image)
 
         return user
 
@@ -146,7 +160,9 @@ class User
                     password:Devise.friendly_token[0,20],
                     tokensecret:$oauthsecret["access_token"],
                     tokendate:Date.today,
-                    avatar: auth.info.image
+                    avatar: auth.info.image,
+                    gender: auth.extra.raw_info.gender,
+                    location: auth.extra.raw_info.location.name
                     )
             end
         end

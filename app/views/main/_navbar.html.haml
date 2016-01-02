@@ -2,9 +2,15 @@
 	.nav-wrapper
 		%a.brand-logo{:href => "#"} Logo
 		%ul#nav-mobile.right.hide-on-med-and-down
+			- if user_signed_in?
+				%li
+					%a
+						= link_to "<i><img class=\"circle\" style=\" width:30px;height:27px;margin-right:5px;\" src=\"#{current_user.avatar.url}\"></img></i>".html_safe, root_path
+
 			%li
-				%a{:href => "sass.html"} Sass
-			%li
-				%a{:href => "badges.html"} Components
-			%li
-				%a{:href => "collapsible.html"} JavaScript
+				- if user_signed_in?
+					= link_to "Log out", destroy_user_session_path, method: :delete
+			
+				-else 
+					= link_to "<i class=\"fa fa-facebook\" style=\"padding-right:5px\"></i>Log in with Facebook".html_safe, user_omniauth_authorize_path(:facebook)
+			
