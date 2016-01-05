@@ -10,11 +10,74 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require 'masonry/basic'
+ *= require 'masonry/centered'
+ *= require 'masonry/fluid'
+ *= require 'masonry/gutters'
+ *= require 'masonry/infinitescroll'
+ *= require 'masonry/right-to-left'
+ *= require 'masonry/transitions'
  *= require_tree .
  *= require_self
  */
 
-@import "materialize";
+//@import "materialize";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+pins {display:none;}
+
+#pins {
+
+margin: 0 auto;
+
+  #pinbox {
+
+  margin: 5px;
+  width: 200px;
+  //position: absolute;
+  //width: 30%;
+  /*box-shadow: 0 1px 1px 0 rgba(215, 42, 44, 0.9);*/
+  border-radius: 7px;
+  text-align: left;
+  a:hover{
+    text-decoration:none;
+  }
+
+
+  img {
+  max-width: 100%;
+  height: auto;
+
+  }
+
+  h2 {
+  font-size: 13px;
+  margin: 0;
+  padding-bottom: 10px; 
+  padding-top: 10px;
+  padding-left: 0;
+  a {
+  color: #474747;
+  text-decoration: none;
+
+  }
+
+  }
+
+.user {
+font-size: 13px;
+border-top: 1px solid #EAEAEA;
+padding: 5px 5px 5px 5px;
+margin: 0;
+}
+
+.row{
+  padding-bottom: 5px ;
+
+}
+}
+}
+
+/* end of pins css*/

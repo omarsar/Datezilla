@@ -182,6 +182,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    masonry-rails (0.2.4)
+      railties
     materialize-sass (0.97.4)
       sass (~> 3.3)
     mime-types (2.99)
@@ -280,6 +282,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_form (3.2.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     spring (1.6.1)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -330,6 +335,7 @@ DEPENDENCIES
   jquery-rails
   js-routes!
   koala (~> 1.10.0rc)
+  masonry-rails (~> 0.2.4)
   materialize-sass
   momentjs-rails!
   neat
@@ -343,6 +349,7 @@ DEPENDENCIES
   react-rails!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   sprockets-coffee-react
   turbolinks

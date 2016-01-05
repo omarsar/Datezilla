@@ -8,10 +8,9 @@
 #= require nprogress
 #= require nprogress-turbolinks
 #= require nprogress-ajax
-#= require materialize-sprockets
-
-
-
+#= require masonry/jquery.masonry
+#= require bootstrap-sprockets
+#= require pins
 #= require_tree ./react
 
 $ ->

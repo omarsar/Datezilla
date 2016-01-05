@@ -11,4 +11,4 @@
 /log/*
 !/log/.keep
 /tmp
-/config/environment_variables.rb
+#/config/environment_variables.rb

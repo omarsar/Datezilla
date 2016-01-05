@@ -1,41 +1,44 @@
-
 .row
-	%a.dropdown-button.btn.pull-right{"data-activates" => "dropdown1", :href => "#", :class=>"btn-primary"} 
-		= "Options"
-	%ul#dropdown1.dropdown-content
-		- @filtering = ["Featured","Join", "New", "Nearby", "Random","Following"]
-		- @filtering.each do |option|
-			%li
-				= link_to option, users_path(:filter=>"#{option}")
+	.dropdown{:role => "group",'data-placement'=> 'bottom'}		
+		%a.dropdown-toggle.pull-right{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button", :href=>"#"}
+			= "Options"
+			%span.caret					
+		%ul.dropdown-menu.dropdown-menu-right{:role => "menu", :style=>"border-radius: 4px"}
+			- @filtering = ["Featured","Join", "New", "Nearby", "Random","Following"]
+			- @filtering.each do |option|
+				%li
+					= link_to option, users_path(:filter=>"#{option}")
 
 
 -# The listed users
-.collection
+#pins
 	- @users.each do |user|
 		- if user != current_user
+			#pinbox
+				.panel.panel-default
+					.panel-body
+						-#obtain the color of the card of the user based on the gender (blue for male and pink for male)
+						-if user.gender == "male"
+							- @backgroundColor = "#CEECF5"
+						-elsif user.gender == "female"
+							- @backgroundColor = "#F8E0EC"
+						-else
+							- @backgroundColor = "#FAFAFA"
 
-			-#obtain the color of the card of the user based on the gender (blue for male and pink for male)
-			-if user.gender == "male"
-				- @backgroundColor = "#CEECF5"
-			-elsif user.gender == "female"
-				- @backgroundColor = "#F8E0EC"
-			-else
-				- @backgroundColor = "#FAFAFA"
-
-			-#user-card
-			.collection-item{:style=>"background-color:#{@backgroundColor};"}
-				.row
-					.col.s2
-						%i
-							%img.circle{:src => "#{user.avatar.url}", :style => ""}
-					.col.s10
-						%a
-							= user.username
-						%br
-						= user.email						
-						%br
-						= user.location
-				.row
-					= "Interests:"
-				.row
-					= render partial: 'follow', :locals => {:user=> user}
+						-#user-card
+						
+						.row
+							= image_tag(user.avatar.url, :class=> "img-circle center-block")
+						.row
+							.col-md-10
+								%a
+									= user.username
+								%br
+								= user.email						
+								%br
+								= user.location
+							%br
+								= "Interests:"
+							%br
+								= render partial: 'follow', :locals => {:user=> user}
+	

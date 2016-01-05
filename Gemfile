@@ -20,9 +20,12 @@ gem 'omniauth-facebook'
 gem "koala", "~> 1.10.0rc"
 #gem 'neography'
 #gem 'neo4jrb_spatial', '~> 1.0.0'
+gem 'masonry-rails', '~> 0.2.4'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 #gem 'sass-rails', '>= 3.2'
+
+gem 'simple_form'
 
 
 #For react capabilities

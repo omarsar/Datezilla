@@ -272,7 +272,7 @@ Devise.setup do |config|
     config.omniauth :facebook, ENV['DEV_AKEY'], ENV['DEV_ASECRET'], :scope => 'email,user_friends,public_profile,user_location', :info_fields => 'email,name,first_name,last_name,gender,location', :display=>'popup', :secure_image_url => 'true'
 
   else
-    config.omniauth :facebook, ENV['PROD_AKEY'], ENV['PROD_ASECRET'], :scope => 'email,user_friends,public_profile', :display=>'popup', :secure_image_url => 'true'
+    #config.omniauth :facebook, ENV['PROD_AKEY'], ENV['PROD_ASECRET'], :scope => 'email,user_friends,public_profile', :display=>'popup', :secure_image_url => 'true'
     #config.omniauth :facebook, "370676716426763", "8f47ab9039dc2827953737cc81d98e7c", :scope => 'email,user_friends,public_profile,publish_actions'
     
   end
