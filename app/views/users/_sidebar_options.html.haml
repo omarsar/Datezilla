@@ -1,9 +1,21 @@
 .row
-	= "quick overview of user profile here"
-	%br
 	- if user_signed_in?
+		.row{:style=>"border: 1px solid #ddd; "}
+			-#a preview of the user follows and followers
+			.media{:style =>"border: 0px solid #333333; padding:2px 2px 2px 2px;"}
+				.media-left
+					- if current_user.provider.present?
+						= image_tag(current_user.avatar.url, :class=> "img-circle center-block", style: " width:60px; length:60px")
+					- else
+						= image_tag(current_user.gravatar_url, :class=> "img-circle center-block", style: "")
+				.media-body
+					%h4= current_user.username
+					= "Followers: " + current_user.followed_by.count.to_s
+					%br
+					= "Following: "+ current_user.following.count.to_s
+		%br
+		-#for changing geneder preference
 		%ul.list-group
-			-#for changing geneder preference
 			%li.list-group-item
 				= "Gender preference"
 				.pull-right
