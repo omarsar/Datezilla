@@ -70,13 +70,15 @@ class User
 
      #additional properties
      property :birthday, type: Date
+     property :age, type: Integer
+
      property :country, type: String
      property :gender, type: String
      property :status, type: String
      property :biography, type: String
      property :gender_preference, type: String
-     property :age_preference, type: Integer
-
+     property :age_preference_min, type: Integer
+     property :age_preference_max, type: Integer
      #add the avatar for user
      has_neo4jrb_attached_file :avatar
      validates_attachment_content_type :avatar, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -108,6 +110,21 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
+
+    #to obtain the age of a user
+    def self.age(dob)
+        now = Date.today
+        now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    end
+
+    def self.gender(sex)
+        if sex == "male"
+            "Man"
+        else
+            "Woman"
+        end
+    end
 
 
     def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -154,6 +171,8 @@ class User
 
                 return registered_user
             else
+                puts " ---------------------------------->"
+                puts auth.extra.raw_info.birthday
                 @oauth = Koala::Facebook::OAuth.new($akey, $asecret)
                 $oauthsecret = @oauth.exchange_access_token_info(auth.credentials.token)
                 user = User.create(username:auth.extra.raw_info.name, #This is the information obtained from Facebook profil
@@ -165,8 +184,12 @@ class User
                     tokensecret:$oauthsecret["access_token"],
                     tokendate:Date.today,
                     avatar: auth.info.image,
-                    gender: auth.extra.raw_info.gender,
-                    location: auth.extra.raw_info.location.name
+                    gender: gender(auth.extra.raw_info.gender),
+                    location: auth.extra.raw_info.location.name,
+                    birthday: auth.extra.raw_info.birthday.to_time,
+                    age_preference_min: 21,
+                    age_preference_max: 30,
+                    age: age(auth.extra.raw_info.birthday.to_time)
                     )
             end
         end

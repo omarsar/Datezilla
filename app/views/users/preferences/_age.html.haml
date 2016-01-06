@@ -1,0 +1,15 @@
+
+= simple_form_for current_user, html: { multipart: true} do |f|
+	.form-group
+		-#= f.label :gender_preference, "Interested in"
+		-#= f.input :gender_preference,label: "Interested in", collection: ["Men", "Women", "Everyone"] , input_html: {class: 'form-control', :style=>"width:20%", name: 'gender_preference'}
+		-#= f.input :gender_preference, input_html: { class: 'form-control', name: 'location'}, placeholder: "Address of Item"
+		.input-group
+			.row
+				.col-md-4
+					= f.input :age_preference_min,label:false, input_html: { class: 'form-control' , :name =>"age1"}, placeholder: "Min"
+
+				.col-md-4
+					= f.input :age_preference_max,label:false, input_html: { class: 'form-control', :name =>"age2"}, placeholder: "Max"
+	= f.button :submit, 'Update', class: "btn btn-primary" 
+

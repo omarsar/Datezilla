@@ -13,7 +13,7 @@
         url: "/users/#{@state.userId}/follow"
         type: 'PUT'
         data: 
-          user: parseInt(@state.userId)
+          user: @state.userId
     
 
     handleSubmitUnFollow: (e) ->

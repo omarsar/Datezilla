@@ -14,13 +14,13 @@
 							.modal-content
 								.modal-body
 									= render partial: 'users/preferences/gender'
-			-#%li.list-group-item
+			%li.list-group-item
 				= "Age preference"
 				.pull-right
-					%a{"data-target" => ".bs-genderpreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
+					%a{"data-target" => ".bs-agepreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
 						%span.fa.fa-pencil-square-o.fa-xs
-					.modal.fade.bs-genderpreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+					.modal.fade.bs-agepreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
 						.modal-dialog.modal-lg
 							.modal-content
 								.modal-body
-									= render partial: 'users/preferences/gender'
+									= render partial: 'users/preferences/age'

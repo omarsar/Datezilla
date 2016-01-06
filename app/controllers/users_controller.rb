@@ -21,13 +21,31 @@ class UsersController < ApplicationController
 
 	end
 
+	# API
+	# ---> /users/:id/unfollow
+	def unfollowed
+		@user = User.find(params[:id])
+		current_user.following.delete(@user)
+		if request.xhr?
+			render json: {count: @user.following.count, id: @user.id }
+		else
+			redirect_to @user
+		end
+	end
+
 
 	def update
 		if params[:gender_preference]
 			current_user.update(:gender_preference => params[:gender_preference])
 			redirect_to root_path
 		end
+
+		if params[:age1] and params[:age2]
+			current_user.update(:age_preference_min => params[:age1], :age_preference_max => params[:age2])
+			redirect_to root_path
+		end
 	end
+
 
 	def show
 		@user = User.find(params[:id])
@@ -48,16 +66,17 @@ class UsersController < ApplicationController
 			end
 		end
 
+		 #, age: (current_user.age_preference_min)..current_user.age_preference_max
 
 		@users = if params[:search].present?
 			User.where(username: params[:search])
 		elsif params[:filter].present?
 			if params[:filter] == "Join"
-				User.where(gender: @gender_preference).order(created_at: :asc)
+				User.all.order(created_at: :asc)
 			end	
 		else
 			if user_signed_in?
-				User.where(gender: @gender_preference)
+				User.where(gender: @gender_preference,  age: (current_user.age_preference_min)..current_user.age_preference_max)
 			else
 				User.all
 			end
