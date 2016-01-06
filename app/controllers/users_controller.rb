@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 			elsif current_user.gender_preference == "Men"
 				"Man"
 			else
-				"Woman"||"Man"
+				["Man","Woman", nil,""]
 			end
 		end
 
