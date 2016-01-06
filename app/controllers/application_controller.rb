@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
 	devise_parameter_sanitizer.for(:account_update) << :gender
 	devise_parameter_sanitizer.for(:sign_up) << :status
 	devise_parameter_sanitizer.for(:account_update) << :status
+	devise_parameter_sanitizer.for(:sign_up) << :gender_preference
+	devise_parameter_sanitizer.for(:account_update) << :gender_preference
   end
 
 

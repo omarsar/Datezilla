@@ -21,6 +21,14 @@ class UsersController < ApplicationController
 
 	end
 
+
+	def update
+		if params[:gender_preference]
+			current_user.update(:gender_preference => params[:gender_preference])
+			redirect_to root_path
+		end
+	end
+
 	def show
 		@user = User.find(params[:id])
 	end
@@ -30,15 +38,29 @@ class UsersController < ApplicationController
 
 	def search_users
 		#session = Neo4j::Session.open(:server_db,"http://localhost:8000")
+		if user_signed_in?
+			@gender_preference = if current_user.gender_preference == "Women"
+				"Woman"
+			elsif current_user.gender_preference == "Men"
+				"Man"
+			else
+				"Woman"||"Man"
+			end
+		end
+
 
 		@users = if params[:search].present?
 			User.where(username: params[:search])
 		elsif params[:filter].present?
 			if params[:filter] == "Join"
-				User.all.order(created_at: :desc)
+				User.where(gender: @gender_preference).order(created_at: :asc)
 			end	
 		else
-			User.all
+			if user_signed_in?
+				User.where(gender: @gender_preference)
+			else
+				User.all
+			end
 		end
 	end
 end

@@ -157,6 +157,7 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     haml (4.0.7)
       tilt
     hashie (3.4.3)
@@ -330,6 +331,7 @@ DEPENDENCIES
   devise-neo4j
   faker
   font-awesome-rails
+  gravtastic
   haml
   jbuilder (~> 2.0)
   jquery-rails

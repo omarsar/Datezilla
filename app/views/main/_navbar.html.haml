@@ -22,7 +22,11 @@
 				%li.dropdown{:role => "group",'data-placement'=> 'bottom'}		
 					- if user_signed_in?
 						%a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button", :href=>"#"}
-							= image_tag(current_user.avatar.url, :class=> "img-circle", :style=>"padding-right:2px; width:25px;height:22px")
+							- if current_user.provider.present?
+								= image_tag(current_user.avatar.url, :class=> "img-circle", :style=>"padding-right:2px; width:25px;height:22px")
+							- else
+								= image_tag(current_user.gravatar_url, :class=> "img-circle", :style=>"padding-right:2px; width:25px;height:22px")
+							
 							= current_user.username
 							%span.caret	
 						%ul.dropdown-menu.dropdown-menu-right{:role => "menu", :style=>"border-radius: 4px"}	

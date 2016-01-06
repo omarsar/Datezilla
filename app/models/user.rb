@@ -29,6 +29,9 @@ class User
      #property :lat, :type => Float
      #property :lon, :type => Float
 
+     include Gravtastic
+     gravtastic
+
 
      #for geolocation
      #geocoded_by :location
@@ -84,6 +87,7 @@ class User
      has_many :out, :interests, type: :HAS_INTEREST, model_class: :Interest
 
      has_many :out, :following, type: :FOLLOWING, model_class: :User
+     has_many :in, :followed_by, model_class: :User, origin: :following
 
      ## Confirmable
      # property :confirmation_token
@@ -168,5 +172,7 @@ class User
         end
     #end of facebook function
     end  
+
+    
 
 end

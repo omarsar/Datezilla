@@ -133,3 +133,34 @@ Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar
 04:40:31.393 [main] INFO  org.eclipse.jetty.server.Server - Started @23433ms
 2016-01-05 20:40:31.395+0000 INFO  [API] Server started on: http://localhost:8000/
 2016-01-05 20:40:31.405+0000 INFO  [API] Remote interface ready and available at [http://localhost:8000/]
+2016-01-06 00:36:25.113+0000 INFO  [API] Neo4j Server shutdown initiated by request
+08:36:25.224 [Thread-11] INFO  o.e.jetty.server.ServerConnector - Stopped ServerConnector@4da7f5dc{HTTP/1.1}{localhost:8000}
+08:36:25.255 [Thread-11] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@642e9017{/,null,UNAVAILABLE}
+08:36:25.283 [Thread-11] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.w.WebAppContext@2701e2ec{/browser,jar:file:/home/ellfae/Dropbox/to_deploy/myapp/db/neo4j/development/system/lib/neo4j-browser-2.2.7.jar!/browser,UNAVAILABLE}
+08:36:25.325 [Thread-11] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@a383bbb{/db/data,null,UNAVAILABLE}
+08:36:25.328 [Thread-11] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@321c1f75{/db/manage,null,UNAVAILABLE}
+08:36:25.338 [Thread-11] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.w.WebAppContext@1ac09b45{/webadmin,jar:file:/home/ellfae/Dropbox/to_deploy/myapp/db/neo4j/development/system/lib/neo4j-server-2.2.7-static-web.jar!/webadmin-html,UNAVAILABLE}
+08:36:25.339 [Thread-11] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.h.MovedContextHandler@66e94d7{/,null,UNAVAILABLE}
+2016-01-06 00:36:25.359+0000 INFO  [API] Successfully shutdown Neo4j Server.
+2016-01-06 00:36:25.940+0000 INFO  [API] Successfully stopped database
+2016-01-06 00:36:25.940+0000 INFO  [API] Successfully shutdown database.
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar 
+2016-01-06 00:36:32.557+0000 INFO  [API] Setting startup timeout to: 120000ms based on 120000
+2016-01-06 00:36:45.386+0000 INFO  [API] Successfully started database
+2016-01-06 00:36:45.736+0000 INFO  [API] Starting HTTP on port :8000 with 2 threads available
+08:36:47.826 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @19764ms
+2016-01-06 00:36:48.058+0000 INFO  [API] Mounting static content at [/webadmin] from [webadmin-html]
+2016-01-06 00:36:48.228+0000 INFO  [API] Mounting static content at [/browser] from [browser]
+08:36:48.237 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.4.v20141103
+08:36:48.311 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@66e94d7{/,null,AVAILABLE}
+08:36:48.459 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /webadmin, did not find org.apache.jasper.servlet.JspServlet
+08:36:48.493 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@1ac09b45{/webadmin,jar:file:/home/ellfae/Dropbox/to_deploy/myapp/db/neo4j/development/system/lib/neo4j-server-2.2.7-static-web.jar!/webadmin-html,AVAILABLE}
+08:36:51.335 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@321c1f75{/db/manage,null,AVAILABLE}
+08:36:52.530 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@a383bbb{/db/data,null,AVAILABLE}
+08:36:52.652 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.apache.jasper.servlet.JspServlet
+08:36:52.670 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@2701e2ec{/browser,jar:file:/home/ellfae/Dropbox/to_deploy/myapp/db/neo4j/development/system/lib/neo4j-browser-2.2.7.jar!/browser,AVAILABLE}
+08:36:53.373 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@642e9017{/,null,AVAILABLE}
+08:36:53.493 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@64fe4f02{HTTP/1.1}{localhost:8000}
+08:36:53.494 [main] INFO  org.eclipse.jetty.server.Server - Started @25503ms
+2016-01-06 00:36:53.501+0000 INFO  [API] Server started on: http://localhost:8000/
+2016-01-06 00:36:53.508+0000 INFO  [API] Remote interface ready and available at [http://localhost:8000/]
