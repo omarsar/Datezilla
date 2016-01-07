@@ -15,10 +15,24 @@
 			-#search form
 			%form.navbar-form.navbar-left{:role => "search"}
 				.form-group
-					%input.form-control{:type => "text", :id =>"search", :name=>"search", :placeholder=>"Who are you looking for?", :size=>"30%"}
+					%input.form-control{:type => "text", :id =>"search", :name=>"search", :placeholder=>"Search users by interests", :size=>"30%"}
 				%button.btn.btn-default{:type => "submit"} Submit
 			-# right hand side of the navigation bar
 			%ul.nav.navbar-nav.navbar-right
+				%li
+					= link_to "<i class=\"fa fa-plus fa-fw fa-lg\" style=\"\"></i>Add Interest".html_safe, new_interest_path(:uploadtype=>"normal"), :remote => true, "data-toggle" => "modal", "data-target" => ".bs-listitem-modal-sm"	
+
+					-# modal for post new p interests
+					.modal.fade.bs-listitem-modal-sm{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1", :id => "postmodal"}
+						.modal-dialog.modal-sm
+							.modal-content{:style => "padding: 5px 5px 5px 5px;"}
+								.modal-header
+									%button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+										%span{"aria-hidden" => "true"} &times;
+									%h4.modal-title Post a new item
+								.modal-body.a-unique-class
+
+				-#Facebook login options
 				%li.dropdown{:role => "group",'data-placement'=> 'bottom'}		
 					- if user_signed_in?
 						%a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button", :href=>"#"}
@@ -35,6 +49,7 @@
 			
 					- else
 						%li
-							= link_to "<i class=\"fa fa-facebook\" style=\"padding-right:5px\"></i>Log in with Facebook".html_safe, user_omniauth_authorize_path(:facebook)			
+							= link_to "<i class=\"fa fa-facebook\" style=\"padding-right:5px\"></i>Log in with Facebook".html_safe, user_omniauth_authorize_path(:facebook)		
+				
 
 				

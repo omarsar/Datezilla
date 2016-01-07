@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   
   root 'users#index'
+
+  resources :interests
   
   resources :users, only: [:index, :show]
 
@@ -13,6 +15,13 @@ Rails.application.routes.draw do
       put "unfollow", to: "users#unfollowed"
       put "goonline", to: "users#goOnline"
       put "gooffline", to: "users#goOffline"
+    end
+  end
+
+  resources :interests do
+    member do
+      put "follow", to: "interests#followed"
+      put "unfollow", to: "interests#unfollowed"
     end
   end
 

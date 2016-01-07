@@ -1,6 +1,6 @@
 .row
 	- if user_signed_in?
-		.row{:style=>"border: 1px solid #ddd; "}
+		.row{:style=>"border: 0px solid #ddd; "}
 			-#a preview of the user follows and followers
 			.media{:style =>"border: 0px solid #333333; padding:2px 2px 2px 2px;"}
 				.media-left
@@ -13,26 +13,46 @@
 					= "Followers: " + current_user.followed_by.count.to_s
 					%br
 					= "Following: "+ current_user.following.count.to_s
-		%br
-		-#for changing geneder preference
-		%ul.list-group
-			%li.list-group-item
-				= "Gender preference"
-				.pull-right
-					%a{"data-target" => ".bs-genderpreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
-						%span.fa.fa-pencil-square-o.fa-xs
-					.modal.fade.bs-genderpreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
-						.modal-dialog.modal-lg
-							.modal-content
-								.modal-body
-									= render partial: 'users/preferences/gender'
-			%li.list-group-item
-				= "Age preference"
-				.pull-right
-					%a{"data-target" => ".bs-agepreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
-						%span.fa.fa-pencil-square-o.fa-xs
-					.modal.fade.bs-agepreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
-						.modal-dialog.modal-lg
-							.modal-content
-								.modal-body
-									= render partial: 'users/preferences/age'
+			%br
+			-#for changing geneder preference
+			%ul.list-group
+				%li.list-group-item
+					= "Gender preference"
+					.pull-right
+						%a{"data-target" => ".bs-genderpreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
+							%span.fa.fa-pencil-square-o.fa-xs
+						.modal.fade.bs-genderpreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+							.modal-dialog.modal-lg
+								.modal-content
+									.modal-body
+										= render partial: 'users/preferences/gender'
+				%li.list-group-item
+					= "Age preference"
+					.pull-right
+						%a{"data-target" => ".bs-agepreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
+							%span.fa.fa-pencil-square-o.fa-xs
+						.modal.fade.bs-agepreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+							.modal-dialog.modal-lg
+								.modal-content
+									.modal-body
+										= render partial: 'users/preferences/age'
+				%li.list-group-item
+					= "Your Interests"
+					.pull-right
+						%a{"data-target" => ".bs-agepreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
+							%span.fa.fa-pencil-square-o.fa-xs
+						.modal.fade.bs-agepreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+							.modal-dialog.modal-lg
+								.modal-content
+									.modal-body
+										= render partial: 'users/preferences/interests'
+
+
+		.row{:style=>"border: 0px solid #ddd; "}
+			%ul.list-group
+				- @interests.each do |interest|
+					%li.list-group-item
+						= interest.title
+						.pull-right
+							= render partial: 'interests/follow', :locals => {:interest=> interest}
+							

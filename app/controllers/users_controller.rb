@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	before_filter :search_users
 
 	def index
+		@interests = Interest.all.order(score: :asc)
 		#puts "--------------"
 		#puts @users
 		#render json: @users
