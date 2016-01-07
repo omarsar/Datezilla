@@ -2,7 +2,10 @@ class UsersController < ApplicationController
 	before_filter :search_users
 
 	def index
-		@interests = Interest.all.order(score: :asc)
+		#User.where(email: "hello@ibelmopan.com").first.following.interests.first.title
+		@otherinterests = current_user.query_as(:b).match('(f:Interest)').where('NOT (b)--(f)').pluck('collect(f)').first
+		@suggestedinterests = current_user.following.interests.all.order(score: :asc)
+		@userinterests = current_user.interests.order(created_at: :desc)
 		#puts "--------------"
 		#puts @users
 		#render json: @users

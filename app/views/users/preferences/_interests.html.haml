@@ -1,0 +1,10 @@
+.panel.panel-default
+	.panel-heading
+		=  "Your personal interests"
+	
+	%ul.list-group
+		- @userinterests.each do |interest|
+			%li.list-group-item
+				= interest.title
+				.pull-right
+					= render partial: 'interests/follow', :locals => {:interest=> interest}
