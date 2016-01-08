@@ -79,7 +79,7 @@ class User
      property :gender_preference, type: String
      property :age_preference_min, type: Integer
      property :age_preference_max, type: Integer
-     property :blind_date, type: String, default: "yes"
+     property :blind_date, type: String, default: "no"
 
      #add the avatar for user
      has_neo4jrb_attached_file :avatar

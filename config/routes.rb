@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     member do
       put "follow", to: "users#followed"
       put "unfollow", to: "users#unfollowed"
-      put "goonline", to: "users#goOnline"
-      put "gooffline", to: "users#goOffline"
+      put "turnoffbd", to: "users#offbd"
+      put "turnonbd", to: "users#onbd"
     end
   end
 

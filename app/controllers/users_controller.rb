@@ -38,6 +38,33 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# API
+	# ---> /users/:id/turnonbd
+	def onbd
+		@user = User.find(params[:id])
+		@user.blind_date = "yes"
+		@user.save
+		if request.xhr?
+			render json: {id: @user.id }
+		else
+			redirect_to @user
+		end
+	end
+
+
+	# API
+	# ---> /users/:id/turnoffbd
+	def offbd
+		@user = User.find(params[:id])
+		@user.blind_date = "no"
+		@user.save
+		if request.xhr?
+			render json: {id: @user.id }
+		else
+			redirect_to @user
+		end
+	end
+
 
 	def update
 		if params[:gender_preference]

@@ -7,10 +7,10 @@
         $(this).blur()
         return
       
-      @setState followValue: "Following"
+      @setState followValue: "Disable blinddating"
       @setState showFollowing: true
       $.ajax
-        url: "/interests/#{@state.userId}/follow"
+        url: "/users/#{@state.userId}/turnonbd"
         type: 'PUT'
         data: 
           user: @state.userId
@@ -23,10 +23,10 @@
         $(this).blur()
         return
 
-      @setState followValue: "Follow"
+      @setState followValue: "Enable blinddating"
       @setState showFollowing: false
       $.ajax
-        url: "/interests/#{@state.userId}/unfollow"
+        url: "/users/#{@state.userId}/turnoffbd"
         type: 'PUT'
         data: 
           user: @state.userId
@@ -45,7 +45,7 @@
     render: ->
       if @state.showFollowing
         React.DOM.button
-          className: 'btn btn-primary btn-xs'
+          className: 'btn btn-danger btn-xs'
           style: {width:'100%'}
           onClick: @handleSubmitUnFollow
           React.DOM.i
@@ -53,11 +53,11 @@
           React.DOM.span style:{'paddingLeft':'2px'}, @state.followValue
       else
         React.DOM.button
-          className: 'btn btn-vote btn-xs'
+          className: 'btn btn-success btn-xs'
           style: {width:'100%'}
           onClick: @handleSubmit
           React.DOM.i
-            className: 'fa fa-plus'
+            className: 'fa fa-power-off'
           React.DOM.span style:{'paddingLeft':'2px'}, @state.followValue
 
       
