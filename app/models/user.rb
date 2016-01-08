@@ -93,6 +93,9 @@ class User
      has_many :out, :following, type: :FOLLOWING, model_class: :User
      has_many :in, :followed_by, model_class: :User, origin: :following
 
+     #for the blinddating part
+     has_one :out, :blinddating, type: :BLINDDATING, model_class: :User
+
      ## Confirmable
      # property :confirmation_token
      # index :confirmation_token
@@ -187,11 +190,11 @@ class User
                     tokendate:Date.today,
                     avatar: auth.info.image,
                     gender: gender(auth.extra.raw_info.gender),
-                    location: auth.extra.raw_info.location.name,
-                    birthday: auth.extra.raw_info.birthday.to_time,
+                    location: 'Hsinchu, Taiwan',
+                    birthday: "09/05/1990".to_time,
                     age_preference_min: 21,
                     age_preference_max: 30,
-                    age: age(auth.extra.raw_info.birthday.to_time)
+                    age: age("09/05/1990".to_time)
                     )
             end
         end

@@ -1,4 +1,4 @@
-@BlindDate = React.createClass
+@Connect = React.createClass
 
     handleSubmit: (e) ->
       e.preventDefault()
@@ -7,7 +7,7 @@
         $(this).blur()
         return
       
-      @setState followValue: "Disable blinddating"
+      @setState followValue: "Stop blinddating"
       @setState showFollowing: true
       $.ajax
         url: "/users/#{@state.userId}/turnonbd"
@@ -27,7 +27,7 @@
         $(this).blur()
         return
 
-      @setState followValue: "Enable blinddating"
+      @setState followValue: "Start blinddating"
       @setState showFollowing: false
       $.ajax
         url: "/users/#{@state.userId}/turnoffbd"
@@ -51,19 +51,19 @@
     render: ->
       if @state.showFollowing
         React.DOM.button
-          className: 'btn btn-danger btn-xs'
+          className: 'btn btn-danger btn-sm'
           style: {width:'100%'}
           onClick: @handleSubmitUnFollow
           React.DOM.i
-            className: 'fa fa-check'
+            className: 'fa fa-stop'
           React.DOM.span style:{'paddingLeft':'2px'}, @state.followValue
       else
         React.DOM.button
-          className: 'btn btn-success btn-xs'
+          className: 'btn btn-success btn-sm'
           style: {width:'100%'}
           onClick: @handleSubmit
           React.DOM.i
-            className: 'fa fa-power-off'
+            className: 'fa fa-play'
           React.DOM.span style:{'paddingLeft':'2px'}, @state.followValue
 
       

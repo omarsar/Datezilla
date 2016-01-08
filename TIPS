@@ -21,3 +21,7 @@ has_many :out, :interests, type: :HAS_INTEREST, model_class: :Interest
 #search for interests based on your weak links (need to just submit those that the user is not following)
 User.where(email: "hello@ibelmopan.com").first.following.interests.first.title
 
+
+
+#seacth for the blinddates function
+@u1.as(:u).following.query_as(:f).match('(i:Interest)').where('(u)--(i) AND (f)--(i)').pluck(:f).first

@@ -1,4 +1,4 @@
-.row
+-#.row
 	.dropdown{:role => "group",'data-placement'=> 'bottom'}		
 		%a.dropdown-toggle.pull-right{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button", :href=>"#"}
 			= "Options"
@@ -10,7 +10,7 @@
 					= link_to option, users_path(:filter=>"#{option}")
 
 
--# The listed users
+-# The mlsit of feature users based on the user preference
 #pins
 	- @users.each do |user|
 		- if user != current_user
@@ -43,4 +43,7 @@
 									= "Interests:"
 								%br
 									= render partial: 'follow', :locals => {:user=> user}
+
+
+	
 	

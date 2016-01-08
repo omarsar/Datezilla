@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       put "unfollow", to: "users#unfollowed"
       put "turnoffbd", to: "users#offbd"
       put "turnonbd", to: "users#onbd"
+      put "connect", to: "users#connect"
+      put "disconnect", to: "users#disconnect"
     end
   end
 

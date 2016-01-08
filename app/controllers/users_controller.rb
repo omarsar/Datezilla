@@ -10,6 +10,26 @@ class UsersController < ApplicationController
 			@suggestedinterests = current_user.query_as(:b).match('(c:User)').match('(f:Interest)').where('NOT (b)--(f) AND (c)--(f)').pluck('collect(f)').first
 			@userinterests = current_user.interests.order(created_at: :desc)
 		end
+
+		#select match for users if blindating is enabled:
+		if user_signed_in? 
+			if current_user.blind_date == "yes"
+				@bd_interest_collection = []
+				@bd_userinterests = current_user.interests.order(created_at: :desc)
+
+				@bd_userinterests.each do |interest|
+					@bd_interest_collection << interest.title
+				end
+
+				puts "------------------------------------------------->"
+				puts @bd_interest_collection
+
+				#User.as(:u).interests.where(title: @bd_interest_collection).pluck(:c)
+				@blinddatingusers = current_user.as(:u).following.query_as(:f).match('(i:Interest)').where('(u)--(i) AND (f)--(i)').pluck(:f)[0]
+
+			end
+		end
+
 	end
 
 	#for follow and unfollow methods
@@ -33,6 +53,7 @@ class UsersController < ApplicationController
 		current_user.following.delete(@user)
 		if request.xhr?
 			render json: {count: @user.following.count, id: @user.id }
+
 		else
 			redirect_to @user
 		end
@@ -46,6 +67,7 @@ class UsersController < ApplicationController
 		@user.save
 		if request.xhr?
 			render json: {id: @user.id }
+			
 		else
 			redirect_to @user
 		end
@@ -60,6 +82,7 @@ class UsersController < ApplicationController
 		@user.save
 		if request.xhr?
 			render json: {id: @user.id }
+			
 		else
 			redirect_to @user
 		end
