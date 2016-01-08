@@ -79,6 +79,8 @@ class User
      property :gender_preference, type: String
      property :age_preference_min, type: Integer
      property :age_preference_max, type: Integer
+     property :blind_date, type: String, default: "yes"
+
      #add the avatar for user
      has_neo4jrb_attached_file :avatar
      validates_attachment_content_type :avatar, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]

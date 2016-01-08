@@ -19,8 +19,9 @@
 				%button.btn.btn-default{:type => "submit"} Submit
 			-# right hand side of the navigation bar
 			%ul.nav.navbar-nav.navbar-right
-				%li
-					= link_to "<i class=\"fa fa-plus fa-fw fa-lg\" style=\"\"></i>Add Interest".html_safe, new_interest_path(:uploadtype=>"normal"), :remote => true, "data-toggle" => "modal", "data-target" => ".bs-listitem-modal-sm"	
+				- if user_signed_in?
+					%li
+						= link_to "<i class=\"fa fa-plus fa-fw fa-lg\" style=\"\"></i>Add Interest".html_safe, new_interest_path(:uploadtype=>"normal"), :remote => true, "data-toggle" => "modal", "data-target" => ".bs-listitem-modal-sm"	
 
 					-# modal for post new p interests
 					.modal.fade.bs-listitem-modal-sm{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1", :id => "postmodal"}

@@ -19,6 +19,18 @@
 				.panel-heading
 					=  "User Preferences"
 				%ul.list-group
+					
+					%li.list-group-item
+						= render partial: "users/preferences/blinddate"
+						-#.pull-right
+							%a{"data-target" => ".bs-genderpreference-modal-lg", "data-toggle" => "modal", :href=>"#"}
+								%span.fa.fa-pencil-square-o.fa-xs
+							.modal.fade.bs-genderpreference-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+								.modal-dialog.modal-lg
+									.modal-content
+										.modal-body
+											= render partial: 'users/preferences/gender'
+
 					%li.list-group-item
 						= "Gender preference"
 						.pull-right
@@ -51,6 +63,7 @@
 											= render partial: 'users/preferences/interests'
 
 
+
 		-#personalized interests based on what the people you are following are interested (weak link consdisered)
 		.row{:style=>"border: 0px solid #ddd; "}
 			.panel.panel-default
@@ -60,7 +73,7 @@
 				%ul.list-group
 					- @suggestedinterests.each do |interest|
 						%li.list-group-item
-							= interest.title
+							= interest.title + " (" + interest.score.to_s + ")"
 							.pull-right
 								= render partial: 'interests/follow', :locals => {:interest=> interest}
 		.row{:style=>"border: 0px solid #ddd; "}
@@ -71,7 +84,7 @@
 				%ul.list-group
 					- @otherinterests.each do |interest|
 						%li.list-group-item
-							= interest.title
+							= interest.title + " (" + interest.score.to_s + ")"
 							.pull-right
 								= render partial: 'interests/follow', :locals => {:interest=> interest}
 									

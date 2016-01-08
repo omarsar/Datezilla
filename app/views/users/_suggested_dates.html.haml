@@ -29,20 +29,18 @@
 						
 						.row
 							- if user.provider.present?
-								= image_tag(user.avatar.url, :class=> "img-circle center-block", style: "border:9px solid #{@backgroundColor}; width:80px; length:80px")
+								= image_tag(user.avatar.url, :class=> "img-circle center-block", style: "border:9px solid #{@backgroundColor}; width:100px; length:100px")
 							- else
 								= image_tag(user.gravatar_url, :class=> "img-circle center-block", style: "border:9px solid #{@backgroundColor};")
 								
 						.row
 							.col-md-10
 								%a
-									= user.username
-								%br
-								= user.email						
+									= user.username						
 								%br
 								= user.age
-							%br
-								= "Interests:"
-							%br
-								= render partial: 'follow', :locals => {:user=> user}
+								%br
+									= "Interests:"
+								%br
+									= render partial: 'follow', :locals => {:user=> user}
 	

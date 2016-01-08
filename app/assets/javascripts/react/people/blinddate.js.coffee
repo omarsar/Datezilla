@@ -1,4 +1,4 @@
-@FollowInterest = React.createClass
+@BlindDate = React.createClass
 
     handleSubmit: (e) ->
       e.preventDefault()

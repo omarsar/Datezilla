@@ -1,0 +1,11 @@
+- if user_signed_in?
+	-if current_user.blind_date == "yes"
+		- @showFollowing = true
+		- @followValue = "Turn off Blinddating"
+		
+	-else
+		- @showFollowing = false
+		- @followValue = "Turn on Blinddating"
+		
+	.col.s4
+		= react_component 'BlindDate', {followValue: @followValue, showFollowing: @showFollowing, userId: current_user.id}
