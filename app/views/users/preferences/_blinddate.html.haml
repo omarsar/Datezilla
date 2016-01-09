@@ -2,10 +2,19 @@
 	-if current_user.blind_date == "yes"
 		- @showFollowing = true
 		- @followValue = "Disable blinddating"
+		- @toggleoff = false
 		
-	-else
+	-elsif current_user.blind_date == "no"
 		- @showFollowing = false
 		- @followValue = "Enable blinddating"
+		- @toggleoff = false
+	-else
+		- @toggleofff = true
+
 		
-	.col.s4
-		= react_component 'BlindDate', {followValue: @followValue, showFollowing: @showFollowing, userId: current_user.id}
+	- if @toggleoff == false
+		.col.s4
+			= react_component 'BlindDate', {followValue: @followValue, showFollowing: @showFollowing, userId: current_user.id}
+	-else
+		.col.s4
+			= "disabled" 

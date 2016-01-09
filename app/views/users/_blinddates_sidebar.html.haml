@@ -1,19 +1,19 @@
 - if user_signed_in?
-	- if current_user.blind_date == "yes"
+	- if current_user.blind_date == "yes" or current_user.blind_date == "na"
 		.row{:style=>"border: 0px solid #ddd; "}
 			.panel.panel-default
 				.panel-heading
-					=  "Suggessted Blind Dates"
+					=  "Suggessted Blind Date"
 				
 				%ul.list-group
 					-# @blinddatingusers.each do |user|
 					- if !@blinddatingusers.blank? 
 						%li.list-group-item
-							= @blinddatingusers.username
+							= "You have a blind-date offer in " + @blinddatingusers.location
 							%br
 	
 							-# check is the user is already on a blind date by counting the number is a relationship of a blinddate exist or not
-							-if current_user.blinddating.blank? == true
+							-if current_user.dating.blank? == true
 								- @showFollowing = false
 								- @followValue = "Start blinddating"
 								
@@ -22,4 +22,11 @@
 								- @followValue = "Stop blinddating"
 								
 							.col.s4
-								= react_component 'Connect', {followValue: @followValue, showFollowing: @showFollowing, userId: current_user.id}
+								= react_component 'Connect', {followValue: @followValue, showFollowing: @showFollowing, userId: @blinddatingusers.id}
+
+					- else
+						%li.list-group-item
+							- @showFollowing = true
+							- @followValue = "Stop blinddating"
+							.col.s4
+								= react_component 'Connect', {followValue: @followValue, showFollowing: @showFollowing, userId: @blinddatingusers.id}

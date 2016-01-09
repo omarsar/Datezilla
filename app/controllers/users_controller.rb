@@ -13,16 +13,13 @@ class UsersController < ApplicationController
 
 		#select match for users if blindating is enabled:
 		if user_signed_in? 
-			if current_user.blind_date == "yes"
+			if current_user.blind_date == "yes" or current_user.blind_date == "na"
 				@bd_interest_collection = []
 				@bd_userinterests = current_user.interests.order(created_at: :desc)
 
 				@bd_userinterests.each do |interest|
 					@bd_interest_collection << interest.title
 				end
-
-				puts "------------------------------------------------->"
-				puts @bd_interest_collection
 
 				#User.as(:u).interests.where(title: @bd_interest_collection).pluck(:c)
 				@blinddatingusers = current_user.as(:u).following.query_as(:f).match('(i:Interest)').where('(u)--(i) AND (f)--(i)').pluck(:f)[0]
@@ -87,6 +84,40 @@ class UsersController < ApplicationController
 			redirect_to @user
 		end
 	end
+
+	#for follow and unfollow methods
+	#API
+	# ---> /users/:id/connect
+	def connect
+		@user = User.find(params[:id])
+		current_user.create_rel("BLINDDATING", @user) 
+		current_user.blind_date = "na"
+		current_user.save
+		if request.xhr?
+			render json: { id: @user.id }
+		else
+			redirect_to @user
+		end
+
+	end
+
+	# API
+	# ---> /users/:id/disconnect
+	def disconnect
+		@user = User.find(params[:id])
+		current_user.rels(dir: :outgoing, type: "BLINDDATING")[0].destroy
+		current_user.blind_date = "yes"
+		current_user.save
+		if request.xhr?
+			render json: {id: @user.id }
+
+		else
+			redirect_to @user
+		end
+	end
+
+
+
 
 
 	def update

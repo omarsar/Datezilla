@@ -25,3 +25,8 @@ User.where(email: "hello@ibelmopan.com").first.following.interests.first.title
 
 #seacth for the blinddates function
 @u1.as(:u).following.query_as(:f).match('(i:Interest)').where('(u)--(i) AND (f)--(i)').pluck(:f).first
+
+
+
+@u1.rels(dir: :outgoing, type: "BLINDDATING")
+

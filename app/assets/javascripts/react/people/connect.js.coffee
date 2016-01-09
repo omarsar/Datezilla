@@ -10,7 +10,7 @@
       @setState followValue: "Stop blinddating"
       @setState showFollowing: true
       $.ajax
-        url: "/users/#{@state.userId}/turnonbd"
+        url: "/users/#{@state.userId}/connect"
         type: 'PUT'
         data: 
           user: @state.userId
@@ -30,7 +30,7 @@
       @setState followValue: "Start blinddating"
       @setState showFollowing: false
       $.ajax
-        url: "/users/#{@state.userId}/turnoffbd"
+        url: "/users/#{@state.userId}/disconnect"
         type: 'PUT'
         data: 
           user: @state.userId

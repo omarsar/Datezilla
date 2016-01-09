@@ -94,7 +94,8 @@ class User
      has_many :in, :followed_by, model_class: :User, origin: :following
 
      #for the blinddating part
-     has_one :out, :blinddating, type: :BLINDDATING, model_class: :User
+     has_one :out, :dating, type: :BLINDDATING, model_class: :User
+     has_one :in, :blinddated_by, model_class: :User, origin: :dates
 
      ## Confirmable
      # property :confirmation_token
