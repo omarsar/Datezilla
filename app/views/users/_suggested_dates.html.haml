@@ -40,7 +40,10 @@
 								%br
 								= user.age
 								%br
-									= "Interests:"
+								= "Interests:"
+								- user.interests.each do |i|
+									= i.title								
+								%br
 								%br
 									= render partial: 'follow', :locals => {:user=> user}
 

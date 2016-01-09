@@ -24,7 +24,7 @@
 							.col.s4
 								= react_component 'Connect', {followValue: @followValue, showFollowing: @showFollowing, userId: @blinddatingusers.id}
 
-					- else
+					-# else
 						%li.list-group-item
 							- @showFollowing = true
 							- @followValue = "Stop blinddating"

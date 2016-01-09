@@ -50,8 +50,10 @@ class InterestsController < ApplicationController
 		@interest = Interest.find(params[:id])
 		current_user.interests.delete(@interest)
 
-		@interest.score = @interest.score - 1
-		@interest.save
+		if interest.score > 0
+			@interest.score = @interest.score - 1
+			@interest.save
+		end
 
 		if request.xhr?
 			render json: { id: @interest.id }

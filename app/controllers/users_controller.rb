@@ -4,10 +4,10 @@ class UsersController < ApplicationController
 	def index
 		#User.where(email: "hello@ibelmopan.com").first.following.interests.first.title
 		if user_signed_in?
-			@otherinterests = current_user.query_as(:b).match('(f:Interest)').where('NOT (b)--(f)').pluck('collect(f)').first
+			@otherinterests = current_user.query_as(:b).match('(f:Interest)').where('NOT (b)--(f)').pluck('collect(f)').first.take(5)
 		
 			#@suggestedinterests = current_user.following.interests.all.order(score: :asc)
-			@suggestedinterests = current_user.query_as(:b).match('(c:User)').match('(f:Interest)').where('NOT (b)--(f) AND (c)--(f)').pluck('collect(f)').first
+			@suggestedinterests = current_user.query_as(:b).match('(c:User)').match('(f:Interest)').where('NOT (b)--(f) AND (c)--(f)').pluck('collect(f)').first.take(5)
 			@userinterests = current_user.interests.order(created_at: :desc)
 		end
 
