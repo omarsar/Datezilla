@@ -36,6 +36,8 @@ gem 'momentjs-rails', github: 'derekprior/momentjs-rails'
 gem "js-routes", github: 'railsware/js-routes'
 gem 'annotate', github: 'ctran/annotate_models'
 gem 'font-awesome-rails'
+gem 'neo4j-will_paginate_redux'
+gem 'will_paginate-bootstrap'
 
 
 #For views:

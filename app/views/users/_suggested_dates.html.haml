@@ -47,6 +47,7 @@
 								%br
 									= render partial: 'follow', :locals => {:user=> user}
 
-
+#pagination-end{style: "padding-top:0px; text-align: center"}
+	= will_paginate @users, renderer: BootstrapPagination::Rails , :previous_label=>"<",	:next_label=>">"
 	
 	

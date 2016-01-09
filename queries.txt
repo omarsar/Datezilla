@@ -1,0 +1,13 @@
+load csv with headers from "file:///home/caugustin/Interest_dummy.csv" as interests create (n:Interest {title_id: toInt(interests.interest_id), title: (interests.interest)})
+
+load csv with headers from "file:///home/caugustin/user_dummy.csv" as users create (n:User {id: users.id, username: users.user_name, location: users.location, user_preference: users.user_preference,gender: users.gender, email: users.email,age: users.age,interest: users.interests})
+
+START n=node(*), m=node(*)  
+where has(n.location) and has(m.location) and n.location = m.location and not n.email = m.email
+create (n)-[:FOLLOWING]->(m)
+
+START n=node(*), m=node(*)  
+where has(n.interest) and has(m.title) and n.interest = m.title
+create (n)-[:HAS_INTEREST]->(m)
+
+Match (n) remove n.interest return n
