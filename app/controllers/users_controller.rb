@@ -169,9 +169,10 @@ class UsersController < ApplicationController
 			end	
 		else
 			if user_signed_in?
-				User.where(gender: @gender_preference,  age: (current_user.age_preference_min)..current_user.age_preference_max).paginate(:page => params[:page], :per_page => 3)
+				User.where(gender: @gender_preference,  age: (current_user.age_preference_min)..current_user.age_preference_max).paginate(:page => params[:page], :per_page => 15)
+				#User.all.paginate(:page => params[:page], :per_page => 15)
 			else
-				User.all
+				User.all.paginate(:page => params[:page], :per_page => 15)
 			end
 		end
 	end

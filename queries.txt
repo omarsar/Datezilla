@@ -2,6 +2,9 @@ load csv with headers from "file:///home/caugustin/Interest_dummy.csv" as intere
 
 load csv with headers from "file:///home/caugustin/user_dummy.csv" as users create (n:User {id: users.id, username: users.user_name, location: users.location, user_preference: users.user_preference,gender: users.gender, email: users.email,age: users.age,interest: users.interests})
 
+
+load csv with headers from "file:///home/ellfae/Dropbox/smallsample.csv" as users create (n:User {username: users.username, location: users.location, gender_preference: users.gender_preference,gender: users.gender, email: users.email,age: users.age})
+
 START n=node(*), m=node(*)  
 where has(n.location) and has(m.location) and n.location = m.location and not n.email = m.email
 create (n)-[:FOLLOWING]->(m)
