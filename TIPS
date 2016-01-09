@@ -30,3 +30,7 @@ User.where(email: "hello@ibelmopan.com").first.following.interests.first.title
 
 @u1.rels(dir: :outgoing, type: "BLINDDATING")
 
+
+
+#TODO LISTS:
+1. Update the birthday together with the age (currently only the age is able to update)

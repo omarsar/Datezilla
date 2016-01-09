@@ -1,0 +1,8 @@
+= simple_form_for current_user, html: { multipart: true} do |f|
+	.form-group
+		-#= f.label :gender_preference, "Interested in"
+		= f.label :birthday
+		%br
+		= f.input :age ,input_html: { class: 'form-control', name: 'age'}
+		-#= f.input :gender_preference, input_html: { class: 'form-control', name: 'location'}, placeholder: "Address of Item"
+	= f.button :submit, 'Update', class: "btn btn-primary" 

@@ -61,6 +61,16 @@
 									.modal-content
 										.modal-body
 											= render partial: 'users/preferences/interests'
+					%li.list-group-item
+						= "Edit Profile"
+						.pull-right
+							%a{"data-target" => ".bs-profile-modal-lg", "data-toggle" => "modal", :href=>"#"}
+								%span.fa.fa-pencil-square-o.fa-xs
+							.modal.fade.bs-profile-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+								.modal-dialog.modal-lg
+									.modal-content
+										.modal-body
+											= render partial: 'users/preferences/profile'
 
 
 

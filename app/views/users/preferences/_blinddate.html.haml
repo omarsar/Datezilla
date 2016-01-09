@@ -9,6 +9,7 @@
 		- @followValue = "Enable blinddating"
 		- @toggleoff = false
 	-else
+
 		- @toggleofff = true
 
 		
@@ -17,4 +18,6 @@
 			= react_component 'BlindDate', {followValue: @followValue, showFollowing: @showFollowing, userId: current_user.id}
 	-else
 		.col.s4
-			= "disabled" 
+			%button.btn.btn-danger.btn-xs.disabled{:type => "button"}
+				%i.fa.fa-check
+				%span{:style => "padding-left:2px;"} Disable blinddating

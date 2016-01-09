@@ -130,6 +130,12 @@ class UsersController < ApplicationController
 			current_user.update(:age_preference_min => params[:age1], :age_preference_max => params[:age2])
 			redirect_to root_path
 		end
+
+		if params[:age]
+			current_user.update(:age => params[:age])
+			redirect_to root_path
+		end
+	
 	end
 
 
